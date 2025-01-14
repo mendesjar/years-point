@@ -19,6 +19,7 @@ const daysLeft = countYear - daysLeftCounts();
 daysLeftElement.innerHTML = daysLeft;
 
 function createGrid(numberOfCells) {
+  if (!numberOfCells) return;
   const clientWidth = gridYears.clientWidth;
   const clientHeight = gridYears.clientHeight;
 
@@ -38,7 +39,7 @@ function createGrid(numberOfCells) {
     const div = document.createElement("div");
     div.className = "grid-item flex justify-center items-center";
     const icon = document.createElement("i");
-    icon.className = `ph-fill ph-circle ${colors(i)} text-sm`;
+    icon.className = `ph-fill ph-circle ${colors(i + 1)} text-sm`;
     div.appendChild(icon);
     gridYears.appendChild(div);
   }
