@@ -39,7 +39,7 @@ function createGrid(numberOfCells) {
     const div = document.createElement("div");
     div.className = "grid-item flex justify-center items-center";
     const icon = document.createElement("i");
-    icon.className = `ph-fill ph-circle ${colors(i + 1)} text-sm animate-pulse`;
+    icon.className = `ph-fill ${colors(i + 1)} text-sm animate-pulse`;
     div.appendChild(icon);
     gridYears.appendChild(div);
   }
@@ -47,12 +47,12 @@ function createGrid(numberOfCells) {
 
 function colors(i) {
   if (i <= daysLeftCounts()) {
-    return "text-gray-300";
+    return "ph-circle text-gray-300";
   }
   if (i === 27) {
-    return "text-green-200";
+    return "ph-seal text-green-200";
   }
-  return "text-gray-800";
+  return "ph-circle text-gray-800";
 }
 
 createGrid(countYear);
