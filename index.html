@@ -17,6 +17,10 @@
         font-family: "Raleway", serif;
         font-optical-sizing: auto;
       }
+      .grid-years {
+        grid-template-columns: repeat(var(--columns), var(--cell-width));
+        grid-template-rows: repeat(var(--rows), var(--cell-height));
+      }
     </style>
     <script>
       tailwind.config = {
@@ -26,7 +30,7 @@
     <title>Year Points</title>
   </head>
   <body class="bg-gray-900 h-dvh w-screen">
-    <div class="h-[90%] w-full grid p-10">
+    <div class="h-[90%] w-full grid px-10 pt-10">
       <div class="grid-years h-full w-full grid"></div>
     </div>
 

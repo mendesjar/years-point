@@ -29,10 +29,10 @@ function createGrid(numberOfCells) {
   const cellWidth = clientWidth / columns;
   const cellHeight = clientHeight / rows;
 
-  gridYears.style.gridTemplateColumns = `repeat(${columns}, ${cellWidth}px)`;
-  gridYears.style.gridTemplateRows = `repeat(${rows}, ${cellHeight}px)`;
   gridYears.style.setProperty("--columns", columns);
   gridYears.style.setProperty("--rows", rows);
+  gridYears.style.setProperty("--cell-width", `${cellWidth}px`);
+  gridYears.style.setProperty("--cell-height", `${cellHeight}px`);
 
   gridYears.innerHTML = "";
   for (let i = 0; i < numberOfCells; i++) {
