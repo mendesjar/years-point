@@ -39,7 +39,7 @@ function createGrid(numberOfCells) {
     const div = document.createElement("div");
     div.className = "grid-item flex justify-center items-center";
     const icon = document.createElement("i");
-    icon.className = `ph-fill ph-circle ${colors(i + 1)} text-sm`;
+    icon.className = `ph-fill ph-circle ${colors(i + 1)} text-sm animate-pulse`;
     div.appendChild(icon);
     gridYears.appendChild(div);
   }
