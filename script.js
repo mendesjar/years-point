@@ -3,8 +3,6 @@ const gridYears = document.querySelector(".grid-years");
 const daysLeftElement = document.querySelector(".days-left");
 const isLeapYear = new Date().getFullYear() % 4;
 const countYear = !isLeapYear ? 366 : 365;
-let columns = 0,
-  rows = 0;
 
 function daysLeftCounts() {
   const today = new Date();
@@ -56,3 +54,5 @@ function colors(i) {
 }
 
 createGrid(countYear);
+
+if (daysLeftCounts() === 27) alert("Parabéns");
