@@ -1,5 +1,5 @@
-const year = document.querySelector(".year");
-const gridYears = document.querySelector(".grid-years");
+const yearElement = document.querySelector(".year");
+const gridYearsElement = document.querySelector(".grid-years");
 const daysLeftElement = document.querySelector(".days-left");
 const isLeapYear = new Date().getFullYear() % 4;
 const countYear = !isLeapYear ? 366 : 365;
@@ -7,19 +7,15 @@ const countYear = !isLeapYear ? 366 : 365;
 function daysLeftCounts() {
   const today = new Date();
   const initYear = new Date(today.getFullYear(), 0, 0);
-  const diff = today - initYear;
+  const diff = today.getTime() - initYear.getTime();
   const daysLeft = Math.floor(diff / (1000 * 60 * 60 * 24));
   return daysLeft;
 }
 
-year.innerHTML = new Date().getFullYear();
-const daysLeft = countYear - daysLeftCounts();
-daysLeftElement.innerHTML = daysLeft;
-
 function createGrid(numberOfCells) {
-  if (!numberOfCells) return;
-  const clientWidth = gridYears.clientWidth;
-  const clientHeight = gridYears.clientHeight;
+  if (!gridYearsElement) return;
+  const clientWidth = gridYearsElement.clientWidth;
+  const clientHeight = gridYearsElement.clientHeight;
 
   const columns = Math.floor(Math.sqrt(numberOfCells));
   const rows = Math.ceil(numberOfCells / columns);
@@ -27,19 +23,19 @@ function createGrid(numberOfCells) {
   const cellWidth = clientWidth / columns;
   const cellHeight = clientHeight / rows;
 
-  gridYears.style.setProperty("--columns", columns);
-  gridYears.style.setProperty("--rows", rows);
-  gridYears.style.setProperty("--cell-width", `${cellWidth}px`);
-  gridYears.style.setProperty("--cell-height", `${cellHeight}px`);
+  gridYearsElement.style.setProperty("--columns", columns);
+  gridYearsElement.style.setProperty("--rows", rows);
+  gridYearsElement.style.setProperty("--cell-width", `${cellWidth}px`);
+  gridYearsElement.style.setProperty("--cell-height", `${cellHeight}px`);
 
-  gridYears.innerHTML = "";
+  gridYearsElement.innerHTML = "";
   for (let i = 0; i < numberOfCells; i++) {
     const div = document.createElement("div");
     div.className = "grid-item flex justify-center items-center";
     const icon = document.createElement("i");
     icon.className = `ph-fill ${colors(i + 1)} text-sm animate-pulse`;
     div.appendChild(icon);
-    gridYears.appendChild(div);
+    gridYearsElement.appendChild(div);
   }
 }
 
@@ -53,6 +49,11 @@ function colors(i) {
   return "ph-circle text-gray-800";
 }
 
-createGrid(countYear);
+if (yearElement && daysLeftElement) {
+  const daysLeft = countYear - daysLeftCounts();
+  yearElement.innerHTML = new Date().getFullYear().toString();
+  daysLeftElement.innerHTML = daysLeft.toString();
+}
 
+createGrid(countYear);
 if (daysLeftCounts() === 27) alert("Parabéns");
