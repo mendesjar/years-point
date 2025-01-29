@@ -40,11 +40,11 @@ function createGrid(numberOfCells) {
 }
 
 function colors(i) {
-  if (i <= daysLeftCounts()) {
-    return "ph-circle text-gray-300";
-  }
   if (i === 27) {
     return "ph-seal text-green-200";
+  }
+  if (i <= daysLeftCounts()) {
+    return "ph-circle text-gray-300";
   }
   return "ph-circle text-gray-800";
 }
